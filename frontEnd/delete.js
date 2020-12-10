@@ -3,5 +3,10 @@ const form = document.forms.delform;
 
 button.addEventListener("click",()=>{
     let id = form.elements["id"].value;
-    fetch(`/delete/:${id}`,{})
+    fetch(`/delete/${id}`,{
+        method:"DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 })

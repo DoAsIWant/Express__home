@@ -52,13 +52,13 @@ app.post("/add:post", body.json(),(req,res)=>{
      res.json(req.body);
 });
 
-app.delete("/delete/:id",body.json(),(req,res)=>{
+app.delete("/delete/id",body.json(),(req,res)=>{
     const prodId =  Number(req.params["id"])
-    const prod = products.find(el=>{
+    const prod = products.findIndex(el=>{
         el.id === prodId;
-    });
-
-    delete prod;
+    })
+    products.splice(prod,1);
+    res.redirect("/products")
 });
 app.get("/delete",(req,res)=>{
     res.render("delete")
